@@ -1,4 +1,7 @@
 AmazonTesting::Application.routes.draw do
+  
+  resources :amazon
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

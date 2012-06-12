@@ -1,0 +1,80 @@
+<div class="container">
+	<section>
+		<p>Amazon Testing</p>
+		
+		<div class="row">
+			<div class="span9">
+				<table class="table table-bordered table-striped table-condensed">
+					<thead>
+						<tr>
+							<th>Parameter</th>
+							<th>Value</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>res</th>
+							<td><%= @res %></td>
+						</tr>
+						<tr>
+							<th>res.is_valid_request?</th>
+							<td><%= @res.is_valid_request? %></td>
+						</tr>
+						<tr>
+							<th>res.has_error?</th>
+							<td><%= @res.has_error? %></td>
+						</tr>
+						<tr>
+							<th>res.error</th>
+							<td><%= @res.error %></td>
+						</tr>
+						<tr>	
+							<th>res.total_pages</th>
+							<td><%= @res.total_pages %></td>
+						</tr>
+						<tr>
+							<th>res.total_results</th>
+							<td><%= @res.total_results %></td>
+						</tr>
+						<tr>
+							<th>res.item_page</th>
+							<td><%= @res.item_page %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<!-- item_attributes table -->
+		<div class="row">
+			<div class="span12">
+				<table class="table table-striped table-condensed">
+					<thead>
+						<tr style="background-color: #555; color: white">
+							<th>Title</th>
+							<th>Author</th>
+							<th>Manufacturer</th>
+							<th>ProductGroup</th>
+							<th>ASIN</th>
+							<th>SmallImage</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @res.items.each_with_index do |item, n| %>
+						<tr>
+							<!-- item_attributes for: Author, Manufacturer, ProductGroup, Title -->
+							<% item_attributes = item.get_element('ItemAttributes') %>
+							<td><%= item_attributes.get('Title') %></td>
+							<td><%= item_attributes.get('Author') %></td>
+							<td><%= item_attributes.get('Manufacturer') %></td>
+							<td><%= item_attributes.get('ProductGroup') %></td>
+							<td><%= @imgs.items[n].get('ASIN') %></td>
+							<td><img src="<%= @imgs.items[n].get('SmallImage/URL') %>"></td>
+						</tr>
+						<% end %>
+					</body>
+				</table>
+			</div>
+		</div>
+	</section>
+</div>
