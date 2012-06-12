@@ -12,4 +12,4 @@ end
 
 gem 'jquery-rails'
 
-gem 'amazon-ecs', path: "/Users/Tyler/.rvm/gems/ruby-1.9.3-p194@amazon-testing/gems/amazon-ecs-2.2.4"
+gem 'amazon-ecs'
